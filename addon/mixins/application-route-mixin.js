@@ -87,7 +87,7 @@ export default Mixin.create(ApplicationRouteMixin, {
     const auth0 = get(this, 'auth0').getAuth0Instance();
     return new RSVP.Promise((resolve, reject) => {
       // TODO: Check to see if we cannot parse the hash or check to see which version of auth0 we are using.... ugh
-      auth0.parseHash((err, parsedPayload) => {
+      auth0.parseHash(window.location.hash, (err, parsedPayload) => {
         if (err) {
           if (err.errorDescription) {
             err.errorDescription = decodeURI(err.errorDescription);
